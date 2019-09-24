@@ -153,7 +153,7 @@ then
     toilet -t --metal -f future "DEVIN"
 elif [[ $HOSTNAME == "Kahless" ]]
 then
-    PS1="${RED}\u@${YELLOW}\h:${RED}[\W]${NORMAL}# "
+    PS1="${NORMAL}\u@${RED}\h:${NORMAL}[\W]> "
     echo -e ${RED}
     toilet -t -f pagga "Kahless"
     echo -e ${NORMAL} 
@@ -218,32 +218,9 @@ upgradeRC()
   url=https://raw.githubusercontent.com/GlennCottam/BashRC/master/bashRC
 
   wget -O $bashrc $url
-
-  # if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
-  # then
-  #   wget -O ~/.bash_profile $url
-  # else
-  #   wget -O ~/.bashrc $url
-  # fi
-
-  clear
   source $bashrc
 }
 
-
-# Restart sources the bashrc depending on hostname
-# alias restart='clear && source ~/.bash_profile'
-alias restart = 'souce $bashrc'
-restart()
-{
-  source $bashrc
-  # if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
-  # then
-  #   source ~/.bash_profile
-  # else
-  #   source ~/.bashrc
-  # fi
-}
 
 # Creates a script (used it in class)
 createScript()
@@ -341,6 +318,7 @@ export LS_COLORS=$LS_COLORS:"*.wmv=01;35":"*.wma=01;35":"*.flv=01;35":"*.m4a=01;
 # Alias' have been created for Ubuntu / Debian
 # The proper packages will need to be installed for some to work
 #Alias'
+alias restart='source $bashrc'
 alias update='sudo apt update && sudo apt upgrade -y'
 alias py='clear && python3'
 alias back='cd ..'
