@@ -128,6 +128,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Global Vars
+bashrc="~/.bashrc"
 
 # Bashrc PS1 conditioning for different hostnames
 # Statup Sequence for BashRC
@@ -166,6 +168,7 @@ then
     echo -e ${RED}
     toilet -t -f future "MacBook Pro"
     echo -e ${NORMAL}
+    bashrc="~/.bash_profile"
 else
     PS1="${GREEN}\u@${BBLUE}\h:${BGREEN}[\W]${NORMAL}# "
 fi
@@ -211,15 +214,17 @@ upgradeRC()
   # URL that will download this file.
   url=https://raw.githubusercontent.com/GlennCottam/BashRC/master/bashRC
 
-  if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
-  then
-    wget -O ~/.bash_profile $url
-  else
-    wget -O ~/.bashrc $url
-  fi
+  wget -O $bashrc $url
+
+  # if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
+  # then
+  #   wget -O ~/.bash_profile $url
+  # else
+  #   wget -O ~/.bashrc $url
+  # fi
 
   clear
-  source ~/.bashrc
+  source $bashrc
 }
 
 
@@ -227,11 +232,13 @@ upgradeRC()
 # alias restart='clear && source ~/.bash_profile'
 restart()
 {
-  if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
-  then
-    source ~/.bash_profile
-  else
-    source ~/.bashrc
+  source $bashrc
+  # if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
+  # then
+  #   source ~/.bash_profile
+  # else
+  #   source ~/.bashrc
+  # fi
 }
 
 # Creates a script (used it in class)
@@ -333,7 +340,7 @@ export LS_COLORS=$LS_COLORS:"*.wmv=01;35":"*.wma=01;35":"*.flv=01;35":"*.m4a=01;
 alias update='sudo apt update && sudo apt upgrade -y'
 alias py='clear && python3'
 alias back='cd ..'
-alias home='cd ~/ && clear && source ~/.bash_profile'
+alias home='cd ~/ && clear && source $bashrc'
 alias svim='sudo vim'
 alias ppa='sudo add-apt-repository'
 alias root='sudo -i'
