@@ -217,9 +217,21 @@ upgradeRC()
   else
     wget -O ~/.bashrc $url
   fi
-  
+
   clear
   source ~/.bashrc
+}
+
+
+# Restart sources the bashrc depending on hostname
+# alias restart='clear && source ~/.bash_profile'
+restart()
+{
+  if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
+  then
+    source ~/.bash_profile
+  else
+    source ~/.bashrc
 }
 
 # Creates a script (used it in class)
@@ -319,7 +331,6 @@ export LS_COLORS=$LS_COLORS:"*.wmv=01;35":"*.wma=01;35":"*.flv=01;35":"*.m4a=01;
 # The proper packages will need to be installed for some to work
 #Alias'
 alias update='sudo apt update && sudo apt upgrade -y'
-alias restart='clear && source ~/.bash_profile'
 alias py='clear && python3'
 alias back='cd ..'
 alias home='cd ~/ && clear && source ~/.bash_profile'
