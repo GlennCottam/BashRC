@@ -132,7 +132,7 @@ if ! shopt -oq posix; then
 fi
 
 # Global Vars
-bashrc="~/.bashrc"
+bashrc='~/.bashrc'
 
 # Bashrc PS1 conditioning for different hostnames
 # Statup Sequence for BashRC
@@ -171,7 +171,7 @@ then
     echo -e ${RED}
     toilet -t -f future "MacBook Pro"
     echo -e ${NORMAL}
-    bashrc="~/.bash_profile"
+    bashrc='~/.bash_profile'
 else
     PS1="${GREEN}\u@${BBLUE}\h:${BGREEN}[\W]${NORMAL}# "
 fi
@@ -217,8 +217,8 @@ upgradeRC()
   # URL that will download this file.
   url=https://raw.githubusercontent.com/GlennCottam/BashRC/master/bashRC
 
-  wget -O $bashrc $url
-  source $bashrc
+  wget -O ${bashrc} ${url}
+  source ${bashrc}
 }
 
 
@@ -318,7 +318,7 @@ export LS_COLORS=$LS_COLORS:"*.wmv=01;35":"*.wma=01;35":"*.flv=01;35":"*.m4a=01;
 # Alias' have been created for Ubuntu / Debian
 # The proper packages will need to be installed for some to work
 #Alias'
-alias restart='source $bashrc'
+alias restart='source ${bashrc}'
 alias update='sudo apt update && sudo apt upgrade -y'
 alias py='clear && python3'
 alias back='cd ..'
