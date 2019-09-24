@@ -208,9 +208,17 @@ toiletExport() {
 # This one is the special one, and honestly the reason I made this repo.
 upgradeRC()
 {
-  wget -O ~/.bash_profile 
+  # URL that will download this file.
+  url=https://raw.githubusercontent.com/GlennCottam/BashRC/master/bashRC
+
+  if [[ $HOSTNAME == "WLM-MacBook-Pro"]]
+  then
+    wget -O ~/.bash_profile $url
+  else
+    wget -O ~/.bashrc $url
+  
   clear
-  source ~/.bash_profile
+  source ~/.bashrc
 }
 
 # Creates a script (used it in class)
